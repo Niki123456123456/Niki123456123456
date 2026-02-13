@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <style>
+    :root {
+      --bg: #05070c;
+      --panel: #0c111b;
+      --border: #1f2a3d;
+      --text: #e9eef7;
+      --muted: #9fb0c7;
+      --accent: #5eead4;
+      --accent-strong: #7df8e4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "SF Pro Text", "Segoe UI", "Fira Sans", "Ubuntu", sans-serif;
+      background: radial-gradient(circle at 20% 20%, #0b1222 0, transparent 40%), radial-gradient(circle at 80% 0, #0d1a2f 0, transparent 35%), var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    main {
+      width: min(1100px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 38px);
+      letter-spacing: 0.4px;
+    }
+
+    p.subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    #status {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 22px 36px rgba(0, 0, 0, 0.42);
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .title h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .desc {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 15px;
+      flex: 1 1 auto;
+    }
+
+    .media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #090f1a;
+      border: 1px solid var(--border);
+      aspect-ratio: 16 / 9;
+    }
+
+    .media img,
+    .media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: nowrap;
+      min-height: 36px;
+      align-items: center;
+    }
+
+    .link {
+      color: var(--bg);
+      background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+      border: none;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+      box-shadow: 0 8px 18px rgba(94, 234, 212, 0.25);
+    }
+
+    .link.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(94, 234, 212, 0.28);
+    }
+
+    .link.secondary:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 22px rgba(94, 234, 212, 0.18);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 24px 12px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Projects</h1>
+      </div>
+      <p id="status" aria-live="polite">Loading projects…</p>
+    </header>
+
+    <ul class="projects" id="projectList" aria-label="Projects"></ul>
+  </main>
+
+  <script>
+    const statusEl = document.getElementById("status");
+    const listEl = document.getElementById("projectList");
+
+    const videoExtensions = ["mp4", "mov", "webm"];
+
+    const setStatus = (message) => {
+      statusEl.textContent = message;
+      statusEl.style.display = message ? "block" : "none";
+    };
+
+    const createMediaElement = (path) => {
+      if (!path) return null;
+      const ext = path.split(".").pop().toLowerCase();
+      const container = document.createElement("div");
+      container.className = "media";
+
+      if (videoExtensions.includes(ext)) {
+        const video = document.createElement("video");
+        video.src = path;
+        video.controls = true;
+        video.preload = "metadata";
+        container.appendChild(video);
+      } else {
+        const img = document.createElement("img");
+        img.src = path;
+        img.alt = "";
+        container.appendChild(img);
+      }
+
+      return container;
+    };
+
+    const renderProject = ({ name, desc, source, url, video }) => {
+      const item = document.createElement("li");
+      item.className = "card";
+
+      const title = document.createElement("div");
+      title.className = "title";
+      const heading = document.createElement("h2");
+      heading.textContent = name;
+      title.appendChild(heading);
+
+      const description = document.createElement("p");
+      description.className = "desc";
+      description.textContent = desc;
+
+      const media = createMediaElement(video);
+      const links = document.createElement("div");
+      links.className = "links";
+
+      if (url) {
+        const liveLink = document.createElement("a");
+        liveLink.className = "link";
+        liveLink.href = url;
+        liveLink.target = "_blank";
+        liveLink.rel = "noreferrer noopener";
+        liveLink.textContent = "Open Project";
+        links.appendChild(liveLink);
+      }
+
+      if (source) {
+        const sourceLink = document.createElement("a");
+        sourceLink.className = "link secondary";
+        sourceLink.href = source;
+        sourceLink.target = "_blank";
+        sourceLink.rel = "noreferrer noopener";
+        sourceLink.textContent = "View Source";
+        links.appendChild(sourceLink);
+      }
+
+      item.appendChild(title);
+      item.appendChild(description);
+      if (media) item.appendChild(media);
+      item.appendChild(links);
+
+      return item;
+    };
+
+    const loadProjects = async () => {
+      try {
+        const response = await fetch("projects.json", { cache: "no-cache" });
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+        const projects = await response.json();
+        listEl.innerHTML = "";
+
+        if (!Array.isArray(projects) || projects.length === 0) {
+          setStatus("No projects found.");
+          return;
+        }
+
+        projects.forEach((project) => listEl.appendChild(renderProject(project)));
+        setStatus("");
+      } catch (error) {
+        console.error("Failed to load projects.json:", error);
+        setStatus("Couldn't load projects. Check the console for details.");
+      }
+    };
+
+    loadProjects();
+  </script>
+</body>
+</html>

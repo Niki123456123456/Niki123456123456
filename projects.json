@@ -1,0 +1,73 @@
+[
+    {
+        "name": "reveal on git webpage",
+        "desc": "VS Code Extension to reveal the current file on your Git hosting webpage (GitHub, GitLab, etc)",
+        "source": "https://github.com/Niki123456123456/revealongitwebpage",
+        "url": "https://marketplace.visualstudio.com/items?itemName=NiklasNordkamp.revealongitwebpage",
+        "video": "videos/revealongitwebpage.gif"
+    },
+    {
+        "name": "uptime",
+        "desc": "Windows and Mac app that calculates your working time and break time based on system logs",
+        "source": "https://github.com/Niki123456123456/mono/tree/main/crates/uptime",
+        "video": "videos/uptime.mov"
+    },
+    {
+        "name": "mac explorer",
+        "desc": "File explorer for mac featuring tabs, favorites, search, sorting and quick actions",
+        "source": "https://github.com/Niki123456123456/mono/tree/main/crates/mac-explorer",
+        "video": "videos/mac_explorer.mov"
+    },
+    {
+        "name": "deployboard",
+        "desc": "A dashboard for managing docker contianer that are a described as yaml-files on gitlab",
+        "source": "https://github.com/Niki123456123456/mono/tree/main/crates/deployboard"
+        
+    },
+    {
+        "name": "tool",
+        "desc": "Simple webpage for encoding/decoding strings into json, base64, url and sha256",
+        "source": "https://github.com/Niki123456123456/mono/tree/main/crates/tool",
+        "url": "https://niki123456123456.github.io/mono/tool",
+        "video": "videos/tool.mov"
+    },
+    {
+        "name": "ar brick viewer",
+        "desc": "A Website you can open with a smartphone an a browser supporting webxr, where you can take a look at a brick in 3d space",
+        "source": "https://github.com/Niki123456123456/mono/tree/main/webxr",
+        "url": "https://niki123456123456.github.io/mono/webxr",
+        "video": "videos/webxr.mp4"
+    },
+    {
+        "name": "ar brick building",
+        "desc": "A Hololens App to build with virtual bricks with snapping",
+        "video": "videos/ar_brick_building.mp4"
+    },
+    {
+        "name": "stereo view renderer",
+        "desc": "A Website that uses the smartphone orientation to provide a 3d illusion with help of stereo view renderer. You need to put your smartphone in vr glasses, so your brain converts the two rendered images into a stero image",
+        "source": "https://github.com/Niki123456123456/mono/tree/main/crates/sketch3",
+        "video": "videos/stereo_view.mov"
+    },
+    {
+        "name": "closest pair",
+        "desc": "Website that compares different algorithms which finding the closest pair in a set of points.",
+        "source": "https://github.com/Niki123456123456/closest_pair",
+        "url": "https://niki123456123456.github.io/closest_pair",
+        "video": "videos/closest_pair.mov"
+    },
+     {
+        "name": "forecasting",
+        "desc": "Website that compares different forecasting techniques with their parameters",
+        "source": "https://github.com/Niki123456123456/mono/tree/main/crates/forecasting",
+        "url": "https://niki123456123456.github.io/mono/forecasting",
+        "video": "videos/forecasting.mov"
+    },
+    {
+        "name": "product similarity search",
+        "desc": "Website where you can upload a csv and filter with min and max and request and then search with similarity for products",
+        "source": "https://github.com/Niki123456123456/product-similarity-search",
+        "url": "https://niki123456123456.github.io/product-similarity-search",
+         "video": "videos/product_similarity_search.mov"
+    }
+]
