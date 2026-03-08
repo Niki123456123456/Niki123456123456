@@ -32,6 +32,13 @@
         "video": "videos/tool.mov"
     },
     {
+        "name": "canvas",
+        "desc": "A canvas-based tool that lets users combine multiple images and vector graphics and export the final composition",
+        "source": "https://github.com/Niki123456123456/canvas",
+        "url": "https://niki123456123456.github.io/canvas",
+        "video": "videos/canvas.mov"
+    },
+    {
         "name": "ar brick viewer",
         "desc": "A Website you can open with a smartphone an a browser supporting webxr, where you can take a look at a brick in 3d space",
         "source": "https://github.com/Niki123456123456/mono/tree/main/webxr",
