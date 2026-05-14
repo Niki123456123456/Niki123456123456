@@ -4,7 +4,7 @@
         "desc": "VS Code Extension to reveal the current file on your Git hosting webpage (GitHub, GitLab, etc)",
         "source": "https://github.com/Niki123456123456/revealongitwebpage",
         "url": "https://marketplace.visualstudio.com/items?itemName=NiklasNordkamp.revealongitwebpage",
-        "video": "videos/revealongitwebpage.gif"
+        "video": "videos/revealongitwebpage.mp4"
     },
     {
         "name": "uptime",
