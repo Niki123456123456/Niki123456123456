@@ -39,6 +39,13 @@
         "video": "videos/canvas.mov"
     },
     {
+        "name": "3d map view",
+        "desc": "A engine to render google earth 3d tiles in rust",
+        "source": "https://github.com/Niki123456123456/egui-3d-map-view",
+        "url": "https://niki123456123456.github.io/egui-3d-map-view",
+        "video": "videos/3d_map_view.mov"
+    },
+    {
         "name": "ar brick viewer",
         "desc": "A Website you can open with a smartphone an a browser supporting webxr, where you can take a look at a brick in 3d space",
         "source": "https://github.com/Niki123456123456/mono/tree/main/webxr",
